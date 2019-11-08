@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.login.LoginActivity">
+
+    <include layout="@layout/layout_title_bar_all"/>
+
+
+    <EditText
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:textSize="14sp"
+        android:hint="请输入账号"
+        android:background="@null"
+        android:id="@+id/edit_user"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
+    <View
+        android:background="@color/grgray"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"/>
+    <EditText
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:textSize="14sp"
+        android:hint="请输入密码"
+        android:background="@null"
+        android:id="@+id/edit_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
+    <View
+        android:background="@color/grgray"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"/>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:background="@drawable/bg_btn_ripple"
+        android:layout_margin="16dp"
+        android:text="登录"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"/>
+</LinearLayout>

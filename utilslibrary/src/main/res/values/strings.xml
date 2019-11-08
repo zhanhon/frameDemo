@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">utilsLibrary</string>
+    <string name="storage_path">/smartMedical</string>
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="contrast">#D83E1F</color>
+    <color name="gray_70">#B3adb1b6</color>
+    <color name="tv_main">#020202</color><!-- 文本主色 -->
+    <color name="tv_sub">#666666</color><!-- 文本副色 -->
+    <color name="tab_text_selection">#FF6949</color>
+    <color name="tab_text_unselection">#A5A5A5</color>
+    <color name="white">#ffffff</color>
+    <color name="line">#dbdbdb</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="main_dark">#8F3B2A</color>
+    <color name="op">#00ffffff</color>
+    <color name="background">#F2F2F2</color>
+    <color name="hint">#CBCCD1</color>
+    <color name="sec">#A5A5A5</color>
+</resources>
