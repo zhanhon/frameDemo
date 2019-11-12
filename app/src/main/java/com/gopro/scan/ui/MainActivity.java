@@ -50,7 +50,12 @@ public class MainActivity extends BaseMvvmActivity<MainViewModel> {
         mViewModel.initTabList();
         for (int i = 0; i < mViewModel.mFragmentList.size(); i++) {
             TabFragment tabFragment = mViewModel.mFragmentList.get(i);
-            TabLayout.Tab tab = mTablayout.newTab().setIcon(tabFragment.getImageId()).setText(tabFragment.getName());
+            View view = LayoutInflater.from(this).inflate(R.layout.tab_main_item,null,false);
+            TabLayout.Tab tab = mTablayout.newTab().setCustomView(view);
+            TextView textView = view.findViewById(R.id.tv_main);
+            ImageView imageView = view.findViewById(R.id.image_main);
+            textView.setText(tabFragment.getName());
+            imageView.setImageResource(tabFragment.getImageId());
             mTablayout.addTab(tab);
         }
 

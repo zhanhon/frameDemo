@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="50dp">
+              android:layout_height="wrap_content">
 
     <ImageView
         android:layout_marginTop="1dp"
@@ -10,8 +10,8 @@
         android:layout_centerHorizontal="true"
         android:src="@drawable/selector_tab_btn_home"
         android:padding="1dp"
-        android:layout_width="24dp"
-        android:layout_height="24dp"/>
+        android:layout_width="25dp"
+        android:layout_height="25dp"/>
     <TextView
         android:textSize="14sp"
         android:textColor="@color/selector_item_tab_text_color"
