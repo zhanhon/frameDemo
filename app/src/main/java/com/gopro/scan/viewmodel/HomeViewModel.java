@@ -8,4 +8,6 @@ public class HomeViewModel extends BaseViewModel<HomeModel> {
     protected HomeModel onBindModel() {
         return new HomeModel();
     }
+
+
 }

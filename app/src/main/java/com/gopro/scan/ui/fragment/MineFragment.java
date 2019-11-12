@@ -1,16 +1,15 @@
 package com.gopro.scan.ui.fragment;
 
-
 import android.view.View;
 
 import com.gopro.scan.R;
-import com.gopro.scan.viewmodel.MainViewModel;
+import com.gopro.scan.viewmodel.MineViewModel;
 import com.zhanh.utilslibrary.mvvm.BaseMvvmFragment;
 
 /**
  *我的
  */
-public class MineFragment extends BaseMvvmFragment<MainViewModel>{
+public class MineFragment extends BaseMvvmFragment<MineViewModel>{
     public MineFragment() {
     }
 
@@ -20,8 +19,8 @@ public class MineFragment extends BaseMvvmFragment<MainViewModel>{
     }
 
     @Override
-    public Class<MainViewModel> onBindViewModel() {
-        return MainViewModel.class;
+    public Class<MineViewModel> onBindViewModel() {
+        return MineViewModel.class;
     }
 
     @Override
