@@ -11,7 +11,6 @@ import com.zhanh.utilslibrary.util.AppManager;
 import com.zhanh.utilslibrary.util.StatusBarUtil;
 
 import androidx.appcompat.app.AppCompatActivity;
-import butterknife.ButterKnife;
 
 public abstract class BaseActivity extends AppCompatActivity {
     private BasePopupView mLoadingPopupView;

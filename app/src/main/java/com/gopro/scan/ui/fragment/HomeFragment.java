@@ -1,25 +1,24 @@
 package com.gopro.scan.ui.fragment;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
+import android.view.ViewGroup;
 
-import com.gopro.scan.R;
+import com.gopro.scan.databinding.FragmentHomeBinding;
 import com.gopro.scan.viewmodel.HomeViewModel;
-import com.gopro.scan.viewmodel.MainViewModel;
 import com.zhanh.utilslibrary.mvvm.BaseMvvmFragment;
 
-import butterknife.BindView;
+import androidx.annotation.Nullable;
 
 /**
  *首页
  */
 public class HomeFragment extends BaseMvvmFragment<HomeViewModel>{
-    public HomeFragment() {
-    }
 
-    @Override
-    public int setLayoutId() {
-        return R.layout.fragment_home;
+    private FragmentHomeBinding mBinding;
+
+    public HomeFragment() {
     }
 
     @Override
@@ -27,10 +26,16 @@ public class HomeFragment extends BaseMvvmFragment<HomeViewModel>{
         return HomeViewModel.class;
     }
 
+    @Nullable
     @Override
-    public void initView(View view) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mBinding = FragmentHomeBinding.inflate(inflater, container, false);
+        return mBinding.getRoot();
+    }
 
-
+    @Override
+    public void initView() {
+        mBinding.tvTest.setText("测试");
 
     }
 

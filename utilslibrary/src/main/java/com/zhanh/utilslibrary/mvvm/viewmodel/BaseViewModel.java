@@ -4,12 +4,14 @@ import com.zhanh.utilslibrary.mvvm.model.BaseModel;
 import com.zhanh.utilslibrary.util.MyLog;
 
 import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ViewModel;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
-public abstract class BaseViewModel<M extends BaseModel> extends ViewModel implements IBaseViewModel,Consumer<Disposable> {
+public abstract class BaseViewModel<M extends BaseModel> extends ViewModel implements LifecycleObserver{
     protected M mModel;
 
     public BaseViewModel() {
@@ -18,42 +20,29 @@ public abstract class BaseViewModel<M extends BaseModel> extends ViewModel imple
 
     protected abstract M onBindModel();
 
-    @Override
-    public void onAny(LifecycleOwner owner, Lifecycle.Event event) {
+    @OnLifecycleEvent(Lifecycle.Event.ON_ANY)
+    public void onAny(LifecycleOwner owner, Lifecycle.Event event){}
 
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+    public void onCreate(){ }
 
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    public void onDestroy(){
+        onCleared();
     }
 
-    @Override
-    public void onCreate() {
-    }
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    public void onStart(){}
 
-    @Override
-    public void onDestroy() {
-    }
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    public void onStop(){}
 
-    @Override
-    public void onStart() {
-    }
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    public void onResume(){}
 
-    @Override
-    public void onStop() {
-    }
+    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+    public void onPause(){}
 
-    @Override
-    public void onResume() {
-    }
-
-    @Override
-    public void onPause() {
-    }
-
-    @Override
-    public void accept(Disposable disposable) throws Exception {
-        if(mModel != null){
-            mModel.addSubscribe(disposable);
-        }
-    }
 
     @Override
     protected void onCleared() {

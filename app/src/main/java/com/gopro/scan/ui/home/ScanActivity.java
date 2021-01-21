@@ -3,34 +3,32 @@ package com.gopro.scan.ui.home;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.gopro.scan.R;
+import com.gopro.scan.databinding.ActivityScanBinding;
 import com.gopro.scan.viewmodel.ScanViewModel;
 import com.uuzuche.lib_zxing.activity.CaptureFragment;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 import com.zhanh.utilslibrary.mvvm.BaseMvvmActivity;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
-public class ScanActivity extends BaseMvvmActivity<ScanViewModel> {
-    @BindView(R.id.tv_title)
-    TextView mTvTitle;
+public class ScanActivity extends BaseMvvmActivity<ScanViewModel> implements View.OnClickListener {
+    private ActivityScanBinding mBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scan);
-        ButterKnife.bind(this);
+        mBinding = ActivityScanBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
         initView();
         initData();
     }
 
     @Override
     public void initView() {
-        mTvTitle.setText("扫一扫");
+        mBinding.title.tvTitle.setText("扫一扫");
+        mBinding.title.imageBack.setOnClickListener(this);
         CaptureFragment captureFragment = new CaptureFragment();
         // 为二维码扫描界面设置定制化界面
         CodeUtils.setFragmentArgs(captureFragment, R.layout.my_camera);
@@ -75,8 +73,12 @@ public class ScanActivity extends BaseMvvmActivity<ScanViewModel> {
         }
     };
 
-    @OnClick(R.id.image_back)
-    public void onViewClicked() {
-        finish();
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.image_back:
+                finish();
+                break;
+        }
     }
 }

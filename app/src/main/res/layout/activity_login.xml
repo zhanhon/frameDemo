@@ -7,7 +7,9 @@
     android:orientation="vertical"
     tools:context=".ui.login.LoginActivity">
 
-    <include layout="@layout/layout_title_bar_all"/>
+    <include
+        android:id="@+id/title"
+        layout="@layout/layout_title_bar_all"/>
 
 
     <EditText

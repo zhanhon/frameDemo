@@ -3,8 +3,9 @@ package com.zhanh.utilslibrary.network.response;
 
 import com.zhanh.utilslibrary.network.RxExceptionUtil;
 
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.disposables.Disposable;
+
 
 public abstract class BaseObserver<T> implements Observer<T> {
     private Disposable disposable;

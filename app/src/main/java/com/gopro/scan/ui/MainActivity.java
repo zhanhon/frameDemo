@@ -1,48 +1,38 @@
 package com.gopro.scan.ui;
 
-import android.Manifest;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 import com.gopro.scan.R;
 import com.gopro.scan.data.bean.TabFragment;
-import com.gopro.scan.ui.home.ScanActivity;
+import com.gopro.scan.databinding.ActivityMainBinding;
 import com.gopro.scan.viewmodel.MainViewModel;
-import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.zhanh.utilslibrary.mvvm.BaseMvvmActivity;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import io.reactivex.disposables.Disposable;
 
 /**
  * 项目使用MVVM + Rxjava + Retrofit模式
  */
 public class MainActivity extends BaseMvvmActivity<MainViewModel> {
-    @BindView(R.id.content)
-    FrameLayout mContent;
-    @BindView(R.id.tablayout)
-    TabLayout mTablayout;
     private Fragment mFragment;
+    private ActivityMainBinding mBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        mBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
+
         initView();
         initData();
+
     }
 
     @Override
@@ -51,16 +41,16 @@ public class MainActivity extends BaseMvvmActivity<MainViewModel> {
         for (int i = 0; i < mViewModel.mFragmentList.size(); i++) {
             TabFragment tabFragment = mViewModel.mFragmentList.get(i);
             View view = LayoutInflater.from(this).inflate(R.layout.tab_main_item,null,false);
-            TabLayout.Tab tab = mTablayout.newTab().setCustomView(view);
+            TabLayout.Tab tab = mBinding.tablayout.newTab().setCustomView(view);
             TextView textView = view.findViewById(R.id.tv_main);
             ImageView imageView = view.findViewById(R.id.image_main);
             textView.setText(tabFragment.getName());
             imageView.setImageResource(tabFragment.getImageId());
-            mTablayout.addTab(tab);
+            mBinding.tablayout.addTab(tab);
         }
 
 //        mTablayout.getTabAt(2).select();//选中指定页
-        mTablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        mBinding.tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 switchFragment(tab.getPosition());
@@ -78,7 +68,6 @@ public class MainActivity extends BaseMvvmActivity<MainViewModel> {
 
     @Override
     public void initData() {
-
 
     }
 

@@ -2,9 +2,6 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 28
-
-
-
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 28
@@ -16,61 +13,53 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("boolean", "LOG_DEBUG", "true")//配置Log日志
+        }
+
         release {
+            buildConfigField("boolean", "LOG_DEBUG", "false")//配置Log日志
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
-}
-
-//有远程依赖的rxjava2替换Rxjava3
-configurations {
-    compile.exclude group: 'io.reactivex.rxjava2', module: 'rxjava'
-    all {
-        resolutionStrategy {
-            eachDependency { DependencyResolveDetails details ->
-                if (details.requested.group == 'io.reactivex.rxjava3' && details.requested.name == 'rxjava') {
-                    details.useVersion '3.0.0-RC1'
-                    details.because 'Unified the version of RxJava3.'
-                }
-            }
-        }
+    viewBinding {
+        enabled = true
     }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    def lifecycle_version = "2.1.0"
+    def lifecycle_version = "2.2.0"
     api "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
 
     api 'com.alibaba:fastjson:1.2.49'
-    api 'com.jeremyliao:live-event-bus-x:1.5.0'
-    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.49-androidx'
+    api 'com.jeremyliao:live-event-bus-x:1.7.2'
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
     api 'com.orhanobut:logger:2.2.0'
     api 'org.litepal.android:java:3.0.0'
-    api 'com.lxj:xpopup:1.8.7-x'//各样式弹窗
+    api 'com.lxj:xpopup:1.9.8'//各样式弹窗
     api 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
     annotationProcessor 'androidx.annotation:annotation:1.1.0'
-    api 'com.tencent:mmkv:1.0.22'
+    api 'com.tencent:mmkv:1.2.7'
     api 'com.contrarywind:Android-PickerView:4.1.8'
-    api 'com.zhihu.android:matisse:0.5.2'
+    api 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.8'
     api 'com.teprinciple:updateapputilsX:2.0.3'
     api 'com.just.agentweb:agentweb:4.1.2'
     api 'com.youth.banner:banner:1.4.10'
     api 'me.jessyan:autosize:1.1.2'
-    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
+    api 'com.google.android.material:material:1.2.1'
+    def refresh_version = "2.0.3"
+    api  "com.scwang.smart:refresh-layout-kernel:$refresh_version"
+    api  "com.scwang.smart:refresh-header-classics:$refresh_version"//经典刷新头
 
     api 'com.github.tbruyelle:rxpermissions:0.10.2'
-    api 'io.reactivex.rxjava2:rxandroid:2.1.1'
-    api 'io.reactivex.rxjava3:rxjava:3.0.0-RC1'
-    api 'com.squareup.retrofit2:retrofit:2.6.1'
+    api 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    api 'io.reactivex.rxjava3:rxjava:3.0.8'
+    api 'com.squareup.retrofit2:retrofit:2.9.0'
     api 'com.squareup.retrofit2:adapter-rxjava2:2.6.1'
     api 'com.squareup.okhttp3:logging-interceptor:3.12.2'
-
-    def butterknife_version = "10.2.0"
-    api "com.jakewharton:butterknife:$butterknife_version"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknife_version"
-    api 'com.google.android.material:material:1.0.0'
 }

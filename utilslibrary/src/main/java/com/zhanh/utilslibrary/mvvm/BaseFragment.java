@@ -9,30 +9,25 @@ import android.view.ViewGroup;
 
 import com.lxj.xpopup.XPopup;
 import com.lxj.xpopup.core.BasePopupView;
-import com.zhanh.utilslibrary.mvvm.viewmodel.BaseViewModel;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 public abstract class BaseFragment extends Fragment{
     private BasePopupView mLoadingPopupView;
-    private Unbinder mUnbinder;
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(setLayoutId(), container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        mUnbinder = ButterKnife.bind(this,view);
         mLoadingPopupView = new XPopup.Builder(getContext()).asLoading().setTitle("加载中...");
         initFunc();
-        initView(view);
+        initView();
         initData();
     }
 
@@ -40,8 +35,7 @@ public abstract class BaseFragment extends Fragment{
 
     }
 
-    public abstract int setLayoutId();
-    public abstract void initView(View view);
+    public abstract void initView();
     public abstract void initData();
 
 
@@ -63,7 +57,6 @@ public abstract class BaseFragment extends Fragment{
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mUnbinder.unbind();
         dismissLoadingDialog();
         mLoadingPopupView = null;
     }
