@@ -1,7 +1,8 @@
 package com.zhanh.utilslibrary.mvvm.model;
 
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
+
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.disposables.Disposable;
 
 public class BaseModel implements IBaseModel {
     private CompositeDisposable mCompositeDisposable;

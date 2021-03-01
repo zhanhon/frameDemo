@@ -8,7 +8,6 @@ import com.jeremyliao.liveeventbus.LiveEventBus;
 import com.lxj.xpopup.XPopup;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
-import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 import com.zhanh.utilslibrary.base.BaseAppContext;
 
 import org.litepal.LitePal;
@@ -28,7 +27,6 @@ public class BaseApplication extends Application {
         Logger.addLogAdapter(new AndroidLogAdapter());
         initLiveEventBus();
         XPopup.setPrimaryColor(getResources().getColor(R.color.main));
-        ZXingLibrary.initDisplayOpinion(this);
     }
 
     private void initDelay(){

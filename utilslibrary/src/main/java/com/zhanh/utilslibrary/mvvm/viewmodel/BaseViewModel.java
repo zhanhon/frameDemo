@@ -8,8 +8,6 @@ import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ViewModel;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 
 public abstract class BaseViewModel<M extends BaseModel> extends ViewModel implements LifecycleObserver{
     protected M mModel;
