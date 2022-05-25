@@ -8,8 +8,7 @@ public class Constants {
 
 
     public class IntentKey{
-        public static final String KEY_WEB_URL = "KEY_WEB_URL";
-        public static final String KEY_WEB_TITLE = "KEY_WEB_TITLE";
+
     }
 
 }
