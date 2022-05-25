@@ -6,11 +6,14 @@ import com.zhanh.utilslibrary.util.MyLog;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ViewModel;
 
 public abstract class BaseViewModel<M extends BaseModel> extends ViewModel implements LifecycleObserver{
     protected M mModel;
+    private MutableLiveData<Boolean> isLoad = new MutableLiveData<>();
 
     public BaseViewModel() {
         this.mModel = onBindModel();
@@ -42,6 +45,11 @@ public abstract class BaseViewModel<M extends BaseModel> extends ViewModel imple
     public void onPause(){}
 
 
+
+
+
+
+
     @Override
     protected void onCleared() {
         super.onCleared();
@@ -51,4 +59,11 @@ public abstract class BaseViewModel<M extends BaseModel> extends ViewModel imple
     }
 
 
+    public LiveData<Boolean> getIsLoad() {
+        return isLoad;
+    }
+
+    public void setIsLoad(boolean isLoad) {
+        this.isLoad.postValue(isLoad);
+    }
 }
